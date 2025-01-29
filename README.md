@@ -161,7 +161,7 @@ Press enter for another turn
 
 ```
 
-function advance (int number, int\* ptr)
+function advance (int number, int* ptr)
 	initialize integer coin variable
 	create random generator
 	create distributor from 0 to 1
@@ -173,9 +173,13 @@ function advance (int number, int\* ptr)
 **void printLane(int horseNum, int\* horses);**
 
 ```
-
-function printLane(int horseNum, int\* horses)
-
+track is array of 15 "-" char
+function printLane(int horseNum, int* horses)
+    for each horse:
+        get horse[horseNum] position
+        update position on track
+        print out track
+        
 ```
 
 **bool isWinner(int horseNum, int\* horses);**
@@ -183,7 +187,7 @@ function printLane(int horseNum, int\* horses)
 ```
 
 constant TRACKLENGTH is max size of track length 15 char
-function isWinner(int horseNum, int\* horses)
+function isWinner(int horseNum, int* horses)
 	return true if position of horseNum is  >= TRACKLENGTH + 1
 
 ```
