@@ -8,11 +8,12 @@ const int TRACKLENGTH = 15;
 const int RACERS = 5;
 
 void advance(int horseNum, int* horses);
-//void printLane(int horseNum, int* horses);
+void printLane(int horseNum, int* horses);
 bool isWinner(int horseNum, int* horses);
 void horsePos(int* horses);
 int main(){
-
+    
+    // intialize horses
 	int horses[] = {0, 0, 0, 0, 0};
 
 	bool winner = false;
@@ -25,14 +26,15 @@ int main(){
 		for (int i = 0; i < RACERS; i++){
 			//std::cout << horses[i] << std::endl;
 			advance(i, horses);
-			if (winner = isWinner(i, horses)){
+			if (isWinner(i, horses)){
 				std::cout << "winner is: " << i << std::endl;
-				//winner = true;
+				winner = true;
 			return winner;
 			} // end if
+            printLane(i, horses);
 		} // end for
-		horsePos(horses);
-		std::cout << std::endl;
+		//horsePos(horses);
+		//std::cout << std::endl;
 	} // end while
 	return(0);
 } // end main
@@ -48,11 +50,25 @@ void advance(int horseNum, int* horses){
 } // end advance
 
 bool isWinner(int horseNum, int* horses){
-	return horses[horseNum] >= TRACKLENGTH + 1;
-} // end isWinner
+	return horses[horseNum] >= TRACKLENGTH;
+} // end isWinnerr
+
+
+void printLane(int horseNum, int* horses){
+
+    char track[16];
+    for (int i = 0; i < TRACKLENGTH; i++){
+        track[i] = '-';
+        } // end for
+
+    track[horses[horseNum]] = '0' + horseNum;
+    std::cout << track << std::endl;
+} // end printLane
+
 
 void horsePos(int* horses){
 	for (int i = 0; i < RACERS; i++){
 		std::cout << horses[i] << " ";
 	} // end for
 } // end horsePos
+

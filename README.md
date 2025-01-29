@@ -173,7 +173,7 @@ function advance (int number, int* ptr)
 **void printLane(int horseNum, int\* horses);**
 
 ```
-track is array of 15 "-" char
+track is initally an array of 15 "-" char
 function printLane(int horseNum, int* horses)
     for each horse:
         get horse[horseNum] position
