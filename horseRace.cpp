@@ -27,7 +27,7 @@ int main(){
 			advance(i, horses);
 			if (winner = isWinner(i, horses)){
 				std::cout << "winner is: " << i << std::endl;
-				winner = true;
+				//winner = true;
 			return winner;
 			} // end if
 		} // end for
