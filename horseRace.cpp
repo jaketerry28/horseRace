@@ -10,31 +10,26 @@ const int RACERS = 5;
 void advance(int horseNum, int* horses);
 void printLane(int horseNum, int* horses);
 bool isWinner(int horseNum, int* horses);
-void horsePos(int* horses);
+
 int main(){
     
     // intialize horses
 	int horses[] = {0, 0, 0, 0, 0};
 
+    // keep going
 	bool winner = false;
 
-	int counter = 0;
-
 	while (!winner){
-		counter++;
-		std::cout << "LOOP: " << counter << std::endl;
-		for (int i = 0; i < RACERS; i++){
-			//std::cout << horses[i] << std::endl;
-			advance(i, horses);
-			if (isWinner(i, horses)){
-				std::cout << "winner is: " << i << std::endl;
-				winner = true;
-			return winner;
-			} // end if
+        std::cout << "Press enter to continue..." << std::endl;
+        std::cin.get();
+
+        for (int i = 0; i < RACERS; i++){
             printLane(i, horses);
-		} // end for
-		//horsePos(horses);
-		//std::cout << std::endl;
+			advance(i, horses);
+            if (isWinner(i, horses)){
+                winner = true;
+            } // end if
+        } // end for
 	} // end while
 	return(0);
 } // end main
@@ -45,30 +40,28 @@ void advance(int horseNum, int* horses){
 	std::random_device rd;
 	std::uniform_int_distribution<int> dist(0, 1);
 	coin = dist(rd);
-
 	horses[horseNum] += coin;
 } // end advance
 
-bool isWinner(int horseNum, int* horses){
-	return horses[horseNum] >= TRACKLENGTH;
-} // end isWinnerr
 
+bool isWinner(int horseNum, int* horses){
+    if (horses[horseNum] >= TRACKLENGTH){
+        int winningLane = horseNum;
+        std::cout << "Horse " << horseNum <<" WINS!!!" << std::endl;
+        return true;
+    } // end for
+    else{
+        return false;
+    } // end else;
+} // end isWinner
 
 void printLane(int horseNum, int* horses){
-
     char track[16];
     for (int i = 0; i < TRACKLENGTH; i++){
         track[i] = '-';
         } // end for
-
     track[horses[horseNum]] = '0' + horseNum;
     std::cout << track << std::endl;
 } // end printLane
 
-
-void horsePos(int* horses){
-	for (int i = 0; i < RACERS; i++){
-		std::cout << horses[i] << " ";
-	} // end for
-} // end horsePos
 

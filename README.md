@@ -188,7 +188,7 @@ function printLane(int horseNum, int* horses)
 
 constant TRACKLENGTH is max size of track length 15 char
 function isWinner(int horseNum, int* horses)
-	return true if position of horseNum is  >= TRACKLENGTH + 1
+	return true if position of horseNum is  >= TRACKLENGTH
 
 ```
 
