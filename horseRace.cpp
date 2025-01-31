@@ -11,27 +11,32 @@ void advance(int horseNum, int* horses);
 void printLane(int horseNum, int* horses);
 bool isWinner(int horseNum, int* horses);
 
+// intialize horses
+int horses[] = {0, 0, 0, 0, 0};
+
+// keep going
+bool winner = false;
+
 int main(){
     
-    // intialize horses
-	int horses[] = {0, 0, 0, 0, 0};
-
-    // keep going
-	bool winner = false;
-
-	while (!winner){
+   	while (!winner){
         std::cout << "Press enter to continue..." << std::endl;
         std::cin.get();
 
-        for (int i = 0; i < RACERS; i++){
-            printLane(i, horses);
+     		for (int i = 0; i < RACERS; i++){
+			printLane(i, horses);
 			advance(i, horses);
-            if (isWinner(i, horses)){
-                winner = true;
-            } // end if
-        } // end for
+
+			if (isWinner(i, horses)){
+                		winner = true;
+            		} // end if
+
+ 		} // end for
+
 	} // end while
+
 	return(0);
+
 } // end main
 
 void advance(int horseNum, int* horses){
@@ -56,7 +61,7 @@ bool isWinner(int horseNum, int* horses){
 } // end isWinner
 
 void printLane(int horseNum, int* horses){
-    char track[16];
+    char track[] = "--------------";
     for (int i = 0; i < TRACKLENGTH; i++){
         track[i] = '-';
         } // end for
